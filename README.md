@@ -16,7 +16,9 @@ $ cd bin/ && make && cd ..
 $ ./bin/BigFoot site.com (Options)
 ```
 ### Options
->[+] Output:  -o
+
+[+] Output:  -o
+
 >Exemple: ./BigFoot google.com -o
 
 By: Lucas Nathaniel
