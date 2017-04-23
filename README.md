@@ -4,6 +4,14 @@
 
 Git: <https://github.com/lucasnathaniel/BigFoot>
 
+Obs: dnsenum riquired!
+
+To install:
+
+```
+$ sudo apt-get install dnsenum
+```
+
 ## Compilation
 
 ```
