@@ -1,6 +1,6 @@
 # BigFoot
 
-> This project aims to make a fast footprint with nmap, nikto and enum dns
+> This project aims to make a fast footprint with nmap and enum dns automatically
 
 Git: <https://github.com/lucasnathaniel/BigFoot>
 
