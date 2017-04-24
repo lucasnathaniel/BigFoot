@@ -30,11 +30,11 @@ int main(int argc, const char * argv[]){
 			}	
 		}
 		string url(argv[1], strnlen(argv[1], 40)); // transformar o site(cons char*) em string
-		ofstream saida("../out/Output.txt"); //Abre a saida
+		ofstream saida("../out/BruteDns.txt"); //Abre a saida
 		
 		//Dnsenum:
 		stringstream entrada_sstr; //string especial para concatenar
-		(bool_output) ? entrada_sstr << "dnsenum -o ../out/Output.xml " << url : entrada_sstr << "dnsenum " << url; //concatenacao de string com const char para string especial
+		(bool_output) ? entrada_sstr << "dnsenum -o ../out/Dnsenum.xml " << url : entrada_sstr << "dnsenum " << url; //concatenacao de string com const char para string especial
 		string entrada_str = entrada_sstr.str(); //transformando string especial em string
 		const char *entrada_char = entrada_str.c_str(); // transformar string para const char
 		system (entrada_char); // dnsenum
@@ -44,17 +44,16 @@ int main(int argc, const char * argv[]){
 		cout << " | _ \\ '_| || |  _/ -_) |) | ' \\(_-< " << endl;
 		cout << " |___/_|  \\_,_|\\__\\___|___/|_||_/__/" << endl;
                                     
-
 		ifstream entrada("../src/DatabaseDNS.txt"); //Abre o entrada com varios DNS's
-		if(!(entrada.is_open())){
+		if(!(entrada.is_open())){ //Verifica se a entrada foi aberta
 			cout << "Database não encontrada" << endl;
 			return 0;
 		}
-		string dns, site;
+		string dns, site_str;
 		while(!entrada.eof()){ //Enquanto nao chegar no fim do banco de dns's
 			getline(entrada, dns);
-			site = dns + url; // concatena a dns com o site
-			const char* site_char = site.c_str(); //transformando a string site em const char*
+			site_str = dns + url; // concatena a dns com o site
+			const char* site_char = site_str.c_str(); //transformando a string site em const char*
 			struct hostent *host;
 			host=gethostbyname(site_char);
 			if(host == NULL){	
