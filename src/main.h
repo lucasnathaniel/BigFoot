@@ -5,7 +5,7 @@
 #include <cstring> //string to const char
 #include <sstream> //concatenar strings
 #include <sys/types.h>
-#include <arpa/inet.h>
+#include <arpa/inet.h> //Pegar IP
 #include <netdb.h>
 
 using namespace std;

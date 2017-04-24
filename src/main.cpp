@@ -4,7 +4,7 @@ int main(int argc, const char * argv[]){
 	
 	system("clear");
 	cout << "-------------------------------------------------------------------------            " << endl;
-	cout << "88888888ba   88               88888888888   FootPrint Tool v0.1                      " << endl;
+	cout << "88888888ba   88               88888888888   FootPrint Tool v0.2                      " << endl;
 	cout << "88      \"8b  \"\"               88                                  ,d              " << endl;
 	cout << "88      ,8P                   88                                  88                 " << endl;
 	cout << "88aaaaaa8P'  88   ,adPPYb,d8  88aaaaa   ,adPPYba,    ,adPPYba,  MM88MMM              " << endl;
@@ -25,7 +25,7 @@ int main(int argc, const char * argv[]){
 	}
 		bool bool_output = false;
 		if(argc > 2){
-			if(strcmp(argv[2],"-o")==0){
+			if(strcmp(argv[2],"-o")==0){ // verificacao pra imprimir
 				bool_output = true;	
 			}	
 		}
@@ -34,25 +34,34 @@ int main(int argc, const char * argv[]){
 		
 		//Dnsenum:
 		stringstream entrada_sstr; //string especial para concatenar
-		(bool_output) ? entrada_sstr << "dnsenum -o out/Output.xml " << url : entrada_sstr << "dnsenum " << url; //concatenacao de string com const char para string especial
+		(bool_output) ? entrada_sstr << "dnsenum -o ../out/Output.xml " << url : entrada_sstr << "dnsenum " << url; //concatenacao de string com const char para string especial
 		string entrada_str = entrada_sstr.str(); //transformando string especial em string
 		const char *entrada_char = entrada_str.c_str(); // transformar string para const char
 		system (entrada_char); // dnsenum
-	
-		//bruteforce dns:
-		ifstream entrada("DatabaseDNS.txt"); //Abre o entrada com varios DNS's
+
+		cout << "  ___          _       ___             " << endl;
+		cout << " | _ )_ _ _  _| |_ ___|   \\ _ _  ___  " << endl;
+		cout << " | _ \\ '_| || |  _/ -_) |) | ' \\(_-< " << endl;
+		cout << " |___/_|  \\_,_|\\__\\___|___/|_||_/__/" << endl;
+                                    
+
+		ifstream entrada("../src/DatabaseDNS.txt"); //Abre o entrada com varios DNS's
+		if(!(entrada.is_open())){
+			cout << "Database não encontrada" << endl;
+			return 0;
+		}
 		string dns, site;
 		while(!entrada.eof()){ //Enquanto nao chegar no fim do banco de dns's
 			getline(entrada, dns);
 			site = dns + url; // concatena a dns com o site
-			const char* site_char = site.c_str();
+			const char* site_char = site.c_str(); //transformando a string site em const char*
 			struct hostent *host;
 			host=gethostbyname(site_char);
 			if(host == NULL){	
 				continue;
 			}
-			cout << "Achou: " << site_char << endl;
-			if(bool_output){saida << "Achou: " << site_char << endl;}
+			cout << "Host: " << site_char << " | IP: " << inet_ntoa(*((struct in_addr *)host->h_addr)) << endl;
+			if(bool_output){saida << site_char << endl;}
 		}
 		entrada.close();
 		saida.close();
