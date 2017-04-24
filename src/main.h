@@ -1,4 +1,6 @@
 #include <iostream>
+#include "list.h"
+#include "host.h"
 #include <fstream> //leitura de entrada
 #include <stdio.h> //system
 #include <string>

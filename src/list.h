@@ -17,6 +17,7 @@ class Lista{
     	Host* getFirst();
     	void insertBegin(string site, string ip);
     	void insertEnd(string site, string ip);
+    	void printSequence2();
 };
 
 #endif

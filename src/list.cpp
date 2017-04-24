@@ -26,7 +26,16 @@ void Lista::insertEnd(string site, string ip){
         insertBegin(site, ip);
         return;
     }
-    
+   
+    Host* busca = first;
+
+    while(busca != NULL){
+        if(busca->getIp() == ip){
+            return;
+        }
+        busca = busca->getNext();
+    }
+
     Host* novo = new Host(site, ip);
     Host* percorre = first;
     
@@ -35,4 +44,16 @@ void Lista::insertEnd(string site, string ip){
     }
     percorre->setNext(novo);
     this->quantity++;
+}
+
+void Lista::printSequence2(){
+    Host *percorre = first;
+    cout << "Não repetidos:" << endl;
+    int i = 1;
+    
+    while(percorre != NULL){
+        cout << i << ": " << percorre->getIp() << endl;
+        i++;
+        percorre = percorre->getNext();
+    }
 }

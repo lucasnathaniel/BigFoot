@@ -39,17 +39,18 @@ int main(int argc, const char * argv[]){
 		const char *entrada_char = entrada_str.c_str(); // transformar string para const char
 		system (entrada_char); // dnsenum
 
-		cout << "  ___          _       ___             " << endl;
-		cout << " | _ )_ _ _  _| |_ ___|   \\ _ _  ___  " << endl;
-		cout << " | _ \\ '_| || |  _/ -_) |) | ' \\(_-< " << endl;
-		cout << " |___/_|  \\_,_|\\__\\___|___/|_||_/__/" << endl;
+		cout << " _____         _       ____           " << endl;
+		cout << "| __  |___ _ _| |_ ___|    \\ ___ ___ " << endl;
+		cout << "| __ -|  _| | |  _| -_|  |  |   |_ -| " << endl;
+		cout << "|_____|_| |___|_| |___|____/|_|_|___| " << endl;
                                     
 		ifstream entrada("../src/DatabaseDNS.txt"); //Abre o entrada com varios DNS's
 		if(!(entrada.is_open())){ //Verifica se a entrada foi aberta
 			cout << "Database não encontrada" << endl;
 			return 0;
 		}
-		string dns, site_str;
+		string dns, site_str, ip_str;
+		Lista* listagem = new Lista(); // criacao da lista de enderecos
 		while(!entrada.eof()){ //Enquanto nao chegar no fim do banco de dns's
 			getline(entrada, dns);
 			site_str = dns + url; // concatena a dns com o site
@@ -59,11 +60,29 @@ int main(int argc, const char * argv[]){
 			if(host == NULL){	
 				continue;
 			}
-			cout << "Host: " << site_char << " | IP: " << inet_ntoa(*((struct in_addr *)host->h_addr)) << endl;
+			ip_str = inet_ntoa(*((struct in_addr *)host->h_addr)); // gravar ip do site em string
+			
+			listagem->insertEnd(site_str, ip_str); //adicionar site e ip na lista
+			//listagem->printSequence2();
+			
+			cout << "Host: " << site_char << " | IP: " << ip_str << endl;
 			if(bool_output){saida << site_char << endl;}
 		}
 		entrada.close();
 		saida.close();
-	
+		listagem->printSequence2();
+	                                       
+	/*cout << " _____               ____  _____ _____   " << endl;
+	cout << "|   | |_____ ___ ___|    \\|   | |   __| " << endl;
+	cout << "| | | |     | .'| . |  |  | | | |__   |  " << endl;
+	cout << "|_|___|_|_|_|__,|  _|____/|_|___|_____|  " << endl;
+	cout << "                |_|                      " << endl;
+
+	Host* nmap = listagem->getFirst();
+	while(nmap->getNext() != NULL){
+
+		nmap = nmap->getNext();
+	}*/
+
 	return 0;
 }

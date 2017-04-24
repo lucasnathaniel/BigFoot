@@ -1,0 +1,15 @@
+shop.ehaqui.com
+cpanel.ehaqui.com
+forum.ehaqui.com
+ftp.ehaqui.com
+localhost.ehaqui.com
+mail.ehaqui.com
+ns1.ehaqui.com
+ns2.ehaqui.com
+painel.ehaqui.com
+server.ehaqui.com
+vps.ehaqui.com
+webdisk.ehaqui.com
+webmail.ehaqui.com
+whm.ehaqui.com
+www.ehaqui.com
