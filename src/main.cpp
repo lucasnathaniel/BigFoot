@@ -4,7 +4,7 @@ int main(int argc, const char * argv[]){
 	
 	system("clear");
 	cout << "-------------------------------------------------------------------------            " << endl;
-	cout << "88888888ba   88               88888888888   FootPrint Tool v0.2                      " << endl;
+	cout << "88888888ba   88               88888888888   FootPrint Tool v0.3                      " << endl;
 	cout << "88      \"8b  \"\"               88                                  ,d              " << endl;
 	cout << "88      ,8P                   88                                  88                 " << endl;
 	cout << "88aaaaaa8P'  88   ,adPPYb,d8  88aaaaa   ,adPPYba,    ,adPPYba,  MM88MMM              " << endl;
@@ -66,7 +66,7 @@ int main(int argc, const char * argv[]){
 			//listagem->printSequence2();
 			
 			cout << "Host: " << site_char << " | IP: " << ip_str << endl;
-			if(bool_output){saida << site_char << endl;}
+			if(bool_output){saida << "Host: " << site_char << " | IP: " << ip_str << endl;}
 		}
 		entrada.close();
 		saida.close();
