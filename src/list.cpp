@@ -57,3 +57,14 @@ void Lista::printSequence2(){
         percorre = percorre->getNext();
     }
 }
+
+void Lista::NmapDNS(bool output){
+    Host* nmap = first;
+        string nmap_str;
+        while(nmap != NULL){
+            (output) ? nmap_str = "nmap -v -sV -A -oN ../out/nmap_" + nmap->getSite() + ".txt " + nmap->getIp() : nmap_str = "nmap -v -sV -A " + nmap->getIp();
+            const char *nmap_const = nmap_str.c_str();
+            system(nmap_const);
+            nmap = nmap->getNext();
+        }
+}

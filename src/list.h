@@ -18,6 +18,7 @@ class Lista{
     	void insertBegin(string site, string ip);
     	void insertEnd(string site, string ip);
     	void printSequence2();
+    	void NmapDNS(bool output);
 };
 
 #endif

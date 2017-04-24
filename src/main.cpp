@@ -72,17 +72,13 @@ int main(int argc, const char * argv[]){
 		saida.close();
 		listagem->printSequence2();
 	                                       
-	/*cout << " _____               ____  _____ _____   " << endl;
+	cout << " _____               ____  _____ _____   " << endl;
 	cout << "|   | |_____ ___ ___|    \\|   | |   __| " << endl;
 	cout << "| | | |     | .'| . |  |  | | | |__   |  " << endl;
 	cout << "|_|___|_|_|_|__,|  _|____/|_|___|_____|  " << endl;
 	cout << "                |_|                      " << endl;
 
-	Host* nmap = listagem->getFirst();
-	while(nmap->getNext() != NULL){
-
-		nmap = nmap->getNext();
-	}*/
+	listagem->NmapDNS(bool_output);
 
 	return 0;
 }
